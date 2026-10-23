@@ -1,0 +1,108 @@
+/* ============================================================
+   FireGuitar — login & register
+   ============================================================ */
+
+.auth-layout { display: flex; min-height: calc(100vh - var(--header-height)); }
+
+.auth-aside {
+    flex: 0 0 420px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 3rem 2.5rem;
+    background: var(--hero-gradient);
+    color: #fff;
+}
+.auth-aside::before,
+.auth-aside::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+.auth-aside::before { width: 340px; height: 340px; top: -90px; right: -90px; background: rgba(255, 255, 255, 0.05); }
+.auth-aside::after { width: 220px; height: 220px; bottom: -60px; left: -60px; background: rgba(200, 16, 46, 0.18); }
+
+.auth-aside-content { position: relative; z-index: 1; }
+.auth-aside-icon { font-size: 3rem; margin-bottom: 1.25rem; }
+.auth-aside h2 { color: #fff; font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 900; text-transform: uppercase; line-height: 1.15; }
+.auth-aside h2 span { color: var(--brand-coral); }
+.auth-aside p { color: rgba(255, 255, 255, 0.7); margin: 0.85rem 0 1.5rem; }
+
+.auth-benefits { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.auth-benefits li { display: flex; gap: 0.55rem; align-items: center; font-weight: 600; font-size: 0.88rem; color: rgba(255, 255, 255, 0.9); }
+.auth-benefits i { color: var(--brand-coral); }
+
+.auth-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1.25rem; }
+.auth-card { width: 100%; max-width: 430px; padding: 2.25rem; }
+.auth-card h1 { font-size: 1.45rem; font-weight: 900; }
+.auth-card .subtitle { color: var(--text-muted); font-size: 0.88rem; margin: 0.3rem 0 1.5rem; }
+
+.auth-alert-slot:not(:empty) { margin-bottom: 1rem; }
+
+.auth-switch { text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
+.auth-switch a { color: var(--accent); font-weight: 700; }
+
+.demo-accounts {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    font-size: 0.78rem;
+}
+.demo-accounts-title { font-weight: 800; color: var(--heading); margin-bottom: 0.4rem; }
+.demo-account { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0.2rem 0; }
+.demo-account code { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); }
+
+.password-rules { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+@media (max-width: 860px) {
+    .auth-aside { display: none; }
+    .auth-card { box-shadow: none; }
+}
+
+/* Forgot password — token result box */
+.reset-token-box {
+    margin: 1.25rem 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+}
+.reset-token-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+.reset-token-value-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.reset-token-value {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    word-break: break-all;
+    color: var(--heading);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.45rem 0.6rem;
+}
+.reset-token-hint {
+    margin-top: 0.65rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Subtle spacing for the forgot-password link on the login page */
+.forgot-link { margin-top: 0.75rem; margin-bottom: 0; }

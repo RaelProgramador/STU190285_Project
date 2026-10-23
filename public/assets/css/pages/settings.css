@@ -1,0 +1,102 @@
+/* ============================================================
+   settings.css — FireGuitar /settings.html
+   ============================================================ */
+
+.settings-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* ── Sidebar ── */
+.settings-aside {
+    position: sticky;
+    top: calc(var(--header-h, 64px) + 1.5rem);
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.settings-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.settings-nav-item:hover {
+    background-color: var(--surface-raised);
+    color: var(--text);
+}
+
+.settings-nav-item.active {
+    background-color: var(--accent-subtle);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ── Profile row ── */
+.settings-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.settings-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.settings-profile-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.settings-profile-email {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+/* ── Form layout ── */
+.settings-form {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1.25rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+    .settings-layout {
+        grid-template-columns: 1fr;
+    }
+    .settings-aside {
+        position: static;
+    }
+    .settings-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

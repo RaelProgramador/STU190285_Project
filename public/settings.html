@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account settings — FireGuitar</title>
+    <script src="/assets/js/core/theme-init.js"></script>
+    <link rel="icon" href="/assets/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/pages/settings.css">
+</head>
+<body>
+    <div id="app-header"></div>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow"><i class="bi bi-person-gear" aria-hidden="true"></i> Account</span>
+                <h1>Account settings</h1>
+                <p class="lead">Manage your profile and security preferences.</p>
+            </div>
+        </section>
+
+        <section class="section-sm">
+            <div class="container settings-layout">
+
+                <!-- Sidebar nav -->
+                <aside class="settings-aside">
+                    <nav class="settings-nav" aria-label="Settings sections">
+                        <a class="settings-nav-item active" href="#profile">
+                            <i class="bi bi-person-circle" aria-hidden="true"></i> Profile
+                        </a>
+                        <a class="settings-nav-item" href="#security">
+                            <i class="bi bi-shield-lock" aria-hidden="true"></i> Security
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Main settings content -->
+                <div class="settings-main stack">
+
+                    <!-- Profile section -->
+                    <section class="card" id="profile">
+                        <div class="card-header">
+                            <h2 class="card-title">Profile information</h2>
+                        </div>
+                        <div class="settings-profile-row">
+                            <div class="settings-avatar" id="profile-avatar" aria-hidden="true">?</div>
+                            <div>
+                                <div class="settings-profile-name" id="profile-name">Loading…</div>
+                                <div class="settings-profile-email" id="profile-email"></div>
+                                <span class="badge badge-accent" id="profile-role" style="margin-top:0.4rem"></span>
+                            </div>
+                        </div>
+                        <p class="form-hint" style="margin-top:1rem">Name and email display information comes from your account. Contact support to update them.</p>
+                    </section>
+
+                    <!-- Security section -->
+                    <section class="card" id="security">
+                        <div class="card-header">
+                            <h2 class="card-title">Change password</h2>
+                        </div>
+                        <p class="form-hint">Choose a password with at least 8 characters that includes both letters and numbers.</p>
+
+                        <div id="pw-alert" aria-live="polite" style="margin-bottom:0.75rem"></div>
+
+                        <form id="pw-form" novalidate class="settings-form">
+                            <div class="form-field">
+                                <label class="form-label" for="currentPassword">Current password</label>
+                                <div class="input-group">
+                                    <i class="bi bi-lock input-icon" aria-hidden="true"></i>
+                                    <input class="input" type="password" id="currentPassword" name="currentPassword"
+                                           placeholder="Your current password" autocomplete="current-password" required>
+                                    <button type="button" class="input-action" data-toggle-password="currentPassword"
+                                            aria-label="Show current password"><i class="bi bi-eye"></i></button>
+                                </div>
+                                <span class="form-error" data-error-for="currentPassword"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label" for="newPassword">New password</label>
+                                <div class="input-group">
+                                    <i class="bi bi-lock-fill input-icon" aria-hidden="true"></i>
+                                    <input class="input" type="password" id="newPassword" name="newPassword"
+                                           placeholder="At least 8 characters, letters + numbers" autocomplete="new-password" required>
+                                    <button type="button" class="input-action" data-toggle-password="newPassword"
+                                            aria-label="Show new password"><i class="bi bi-eye"></i></button>
+                                </div>
+                                <span class="form-error" data-error-for="newPassword"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label" for="confirmPassword">Confirm new password</label>
+                                <div class="input-group">
+                                    <i class="bi bi-lock-fill input-icon" aria-hidden="true"></i>
+                                    <input class="input" type="password" id="confirmPassword" name="confirmPassword"
+                                           placeholder="Repeat your new password" autocomplete="new-password" required>
+                                    <button type="button" class="input-action" data-toggle-password="confirmPassword"
+                                            aria-label="Show confirm password"><i class="bi bi-eye"></i></button>
+                                </div>
+                                <span class="form-error" data-error-for="confirmPassword"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="pw-submit-btn">
+                                <i class="bi bi-check-lg" aria-hidden="true"></i> Update password
+                            </button>
+                        </form>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script type="module" src="/assets/js/pages/settings.js"></script>
+</body>
+</html>

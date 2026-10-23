@@ -1,0 +1,93 @@
+/* ============================================================
+   FireGuitar — student dashboard
+   ============================================================ */
+
+.dash-hero { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.dash-hero .eyebrow { color: var(--brand-coral); }
+
+.dash-content { gap: 1.5rem; }
+.dash-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+
+/* Stat cards */
+.stat-card { display: flex; align-items: center; gap: 1rem; }
+.stat-card-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-md);
+    font-size: 1.3rem;
+    background: var(--accent-soft); color: var(--accent);
+}
+.stat-card-icon.navy { background: rgba(74, 95, 193, 0.14); color: var(--primary); }
+[data-theme='dark'] .stat-card-icon.navy { color: #8fa0ff; }
+.stat-card-icon.green { background: var(--success-soft); color: var(--success); }
+.stat-card-icon.amber { background: var(--warning-soft); color: var(--warning); }
+.stat-card-value { font-size: 1.45rem; font-weight: 900; color: var(--heading); line-height: 1.1; }
+.stat-card-label { font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Continue card */
+.continue-card {
+    display: flex; align-items: center; gap: 1.5rem;
+    background: var(--hero-gradient);
+    color: #fff;
+    border: none;
+}
+.continue-card .eyebrow { color: var(--brand-coral); margin-bottom: 0.25rem; }
+.continue-card h2 { color: #fff; font-size: 1.25rem; font-weight: 900; }
+.continue-card p { color: rgba(255, 255, 255, 0.75); font-size: 0.88rem; margin: 0.35rem 0 1rem; }
+.continue-card-body { flex: 1; min-width: 0; }
+.continue-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+
+/* Stage progress list */
+.stage-progress-list { display: flex; flex-direction: column; gap: 0.35rem; }
+.stage-progress-item {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.7rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition);
+}
+.stage-progress-item:hover { background: var(--surface-2); }
+.stage-progress-num {
+    width: 30px; height: 30px; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    font-size: 0.78rem; font-weight: 900;
+    background: var(--surface-3); color: var(--text-muted);
+}
+.stage-progress-item.is-active .stage-progress-num { background: var(--brand-red); color: #fff; }
+.stage-progress-item.is-done .stage-progress-num { background: var(--success); color: #fff; }
+.stage-progress-body { flex: 1; min-width: 0; }
+.stage-progress-body .progress-label { margin-bottom: 0.3rem; }
+.stage-progress-body .progress-label span:first-child { color: var(--heading); font-size: 0.85rem; }
+
+/* Weekly chart */
+.weekly-chart { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; align-items: end; height: 150px; }
+.bar-col { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; height: 100%; justify-content: flex-end; }
+.bar-track { width: 100%; max-width: 28px; flex: 1; display: flex; align-items: flex-end; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+.bar-fill { width: 100%; height: 0; background: linear-gradient(0deg, var(--brand-red), var(--brand-coral)); border-radius: 6px; transition: height 0.8s ease; }
+.bar-col.is-today .bar-day { color: var(--accent); }
+.bar-day { font-size: 0.68rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+
+/* Goals preview */
+.goal-mini + .goal-mini { margin-top: 1rem; }
+.goal-mini-title { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; font-weight: 700; color: var(--heading); margin-bottom: 0.35rem; }
+.goal-mini-meta { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+/* Recent */
+.recent-title { margin-bottom: 0.75rem; }
+.recent-list { list-style: none; display: flex; flex-direction: column; }
+.recent-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+.recent-item:last-child { border-bottom: none; }
+.recent-item .status-icon { width: 28px; height: 28px; font-size: 0.85rem; }
+.recent-item-body { flex: 1; min-width: 0; }
+.recent-item-title { font-size: 0.85rem; font-weight: 700; color: var(--heading); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.recent-item-meta { font-size: 0.72rem; color: var(--text-muted); }
+
+.small-empty { font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 1rem 0; }
+
+@media (max-width: 960px) {
+    .dash-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .continue-card { flex-direction: column; align-items: flex-start; }
+}

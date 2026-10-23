@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — FireGuitar</title>
+    <script src="/assets/js/core/theme-init.js"></script>
+    <link rel="icon" href="/assets/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+</head>
+<body>
+    <div id="app-header"></div>
+
+    <main id="main" class="auth-layout">
+        <aside class="auth-aside" aria-hidden="true">
+            <div class="auth-aside-content">
+                <div class="auth-aside-icon">🔥</div>
+                <h2>Start your<br><span>guitar journey</span></h2>
+                <p>One structured path from your very first note to a professional level.</p>
+                <ul class="auth-benefits">
+                    <li><i class="bi bi-check-circle-fill"></i> 6 stages · 54 step-by-step lessons</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Progress tracking & personal goals</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Free forever — no credit card</li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="auth-main">
+            <div class="card auth-card">
+                <h1>Create your account</h1>
+                <p class="subtitle">It takes less than a minute.</p>
+
+                <div class="auth-alert-slot" id="form-alert" aria-live="polite"></div>
+
+                <form id="register-form" novalidate>
+                    <div class="form-field">
+                        <label class="form-label" for="name">Full name</label>
+                        <div class="input-group">
+                            <i class="bi bi-person input-icon" aria-hidden="true"></i>
+                            <input class="input" type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required>
+                        </div>
+                        <span class="form-error" data-error-for="name"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="email">Email address</label>
+                        <div class="input-group">
+                            <i class="bi bi-envelope input-icon" aria-hidden="true"></i>
+                            <input class="input" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                        </div>
+                        <span class="form-error" data-error-for="email"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="password">Password</label>
+                        <div class="input-group">
+                            <i class="bi bi-lock input-icon" aria-hidden="true"></i>
+                            <input class="input" type="password" id="password" name="password" placeholder="At least 8 characters" autocomplete="new-password" required>
+                            <button type="button" class="input-action" data-toggle-password="password" aria-label="Show password"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <span class="password-rules">Use 8+ characters with letters and numbers.</span>
+                        <span class="form-error" data-error-for="password"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="confirm">Confirm password</label>
+                        <div class="input-group">
+                            <i class="bi bi-lock-fill input-icon" aria-hidden="true"></i>
+                            <input class="input" type="password" id="confirm" name="confirm" placeholder="Repeat your password" autocomplete="new-password" required>
+                            <button type="button" class="input-action" data-toggle-password="confirm" aria-label="Show password"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <span class="form-error" data-error-for="confirm"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-btn">Create account</button>
+                </form>
+
+                <p class="auth-switch">Already have an account? <a href="/login.html">Log in</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="/assets/js/pages/register.js"></script>
+</body>
+</html>

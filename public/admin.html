@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — FireGuitar</title>
+    <script src="/assets/js/core/theme-init.js"></script>
+    <link rel="icon" href="/assets/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/pages/admin.css">
+</head>
+<body>
+    <div id="app-header"></div>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow admin-eyebrow"><i class="bi bi-shield-lock" aria-hidden="true"></i> Administrator</span>
+                <h1>Admin panel</h1>
+                <p class="lead">Manage students, permissions, lessons and content.</p>
+            </div>
+        </section>
+
+        <section class="section-sm">
+            <div class="container stack admin-content">
+                <div class="grid grid-4" id="admin-stats">
+                    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+                </div>
+
+                <!-- Users -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="bi bi-people" aria-hidden="true"></i> Users & permissions</h2>
+                        <input class="input admin-search" type="search" id="user-search" placeholder="Search name or email" aria-label="Search users">
+                    </div>
+                    <div class="table-wrap" id="users-table"><div class="skeleton"></div></div>
+                </section>
+
+                <!-- Lessons CRUD -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="bi bi-journal-richtext" aria-hidden="true"></i> Lessons</h2>
+                        <div class="admin-lesson-controls">
+                            <input class="input admin-search" type="search" id="lesson-search" placeholder="Search lessons" aria-label="Search lessons">
+                            <button class="btn btn-primary btn-sm" id="btn-new-lesson" type="button">
+                                <i class="bi bi-plus-lg" aria-hidden="true"></i> New lesson
+                            </button>
+                        </div>
+                    </div>
+                    <p class="form-hint admin-hint">Add, edit or delete lessons. You can also update the YouTube video for each one.</p>
+                    <div class="table-wrap" id="lessons-table"><div class="skeleton"></div></div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Lesson modal (create / edit) -->
+        <div class="modal-overlay" id="lesson-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-title">New lesson</h3>
+                    <button class="icon-btn" type="button" id="modal-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div id="modal-alert" aria-live="polite"></div>
+                <form id="lesson-form" novalidate class="modal-form">
+                    <input type="hidden" name="lessonId">
+
+                    <div class="form-row">
+                        <div class="form-field" style="flex:1">
+                            <label class="form-label" for="lf-module">Module <span class="required">*</span></label>
+                            <select class="select" id="lf-module" name="moduleId" required>
+                                <option value="">Select a module…</option>
+                            </select>
+                            <span class="form-error" data-error-for="moduleId"></span>
+                        </div>
+                        <div class="form-field" style="flex:0 0 90px">
+                            <label class="form-label" for="lf-duration">Duration (min)</label>
+                            <input class="input" type="number" id="lf-duration" name="durationMin" min="1" max="180" value="10">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="lf-title">Title <span class="required">*</span></label>
+                        <input class="input" type="text" id="lf-title" name="title" maxlength="200" placeholder="e.g. Open chords Em and Am" required>
+                        <span class="form-error" data-error-for="title"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="lf-summary">Summary <span class="form-hint-inline">(shown in lesson list)</span></label>
+                        <input class="input" type="text" id="lf-summary" name="summary" maxlength="300" placeholder="One-line description">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="lf-content">Lesson content <span class="form-hint-inline">(full explanation)</span></label>
+                        <textarea class="input textarea" id="lf-content" name="content" rows="5" placeholder="Write the full lesson explanation here…"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="lf-tab">Guitar tab <span class="form-hint-inline">(plain text TAB notation)</span></label>
+                        <textarea class="input textarea textarea-mono" id="lf-tab" name="tabContent" rows="5"
+                                  placeholder="e|---0---|\nB|---1---|\nG|---0---|\n..."></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="lf-practice">Practice checklist <span class="form-hint-inline">(one step per line)</span></label>
+                        <textarea class="input textarea" id="lf-practice" name="practice" rows="4"
+                                  placeholder="Fret the Em chord cleanly&#10;Strum 4 times slowly&#10;Switch to Am and back"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label" for="lf-video">YouTube video URL or ID <span class="form-hint-inline">(optional)</span></label>
+                        <div class="input-group">
+                            <i class="bi bi-youtube input-icon" aria-hidden="true"></i>
+                            <input class="input" type="text" id="lf-video" name="videoUrl" placeholder="https://youtu.be/… or dQw4w9WgXcQ">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button" id="modal-cancel">Cancel</button>
+                        <button class="btn btn-primary" type="submit" id="modal-submit">
+                            <i class="bi bi-check-lg" aria-hidden="true"></i> Save lesson
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete confirmation modal -->
+        <div class="modal-overlay" id="delete-modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title" hidden>
+            <div class="modal-box modal-box-sm">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="delete-modal-title">Delete lesson</h3>
+                    <button class="icon-btn" type="button" id="delete-modal-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <p id="delete-modal-msg" style="margin:0.5rem 0 1.5rem;color:var(--text-muted);font-size:0.9rem">
+                    Are you sure you want to delete this lesson? This will also remove all student progress for it. This cannot be undone.
+                </p>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" type="button" id="delete-cancel">Cancel</button>
+                    <button class="btn btn-danger" type="button" id="delete-confirm">
+                        <i class="bi bi-trash" aria-hidden="true"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="app-footer"></div>
+    <script type="module" src="/assets/js/pages/admin.js"></script>
+</body>
+</html>

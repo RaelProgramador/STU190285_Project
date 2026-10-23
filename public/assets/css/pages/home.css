@@ -1,0 +1,183 @@
+/* ============================================================
+   FireGuitar — home page
+   ============================================================ */
+
+.hero { padding: 1.5rem 0 2rem; background: var(--surface); }
+
+.hero-banner {
+    background-image:
+        linear-gradient(to bottom, rgba(27, 42, 107, 0.72), rgba(19, 31, 82, 0.62)),
+        url('/assets/images/Guitarra.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 1rem 0;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+}
+.hero-title span { color: var(--brand-coral); }
+
+.hero-subtitle {
+    max-width: 560px;
+    margin: 0 auto 1.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+}
+
+.hero-actions { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+
+/* Stats */
+.stats-strip { background: var(--brand-navy); padding: 1.25rem 0; }
+[data-theme='dark'] .stats-strip { background: var(--surface); border-block: 1px solid var(--border); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { display: flex; flex-direction: column; align-items: center; padding: 0.5rem; }
+.stat + .stat { border-left: 1px solid rgba(255, 255, 255, 0.12); }
+.stat-value { font-size: 1.7rem; font-weight: 900; color: #fff; line-height: 1.1; }
+.stat-label { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); }
+
+/* Method */
+.method-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+    counter-reset: step;
+}
+
+.method-step {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+.method-step:not(:last-child)::after {
+    content: '\F138';
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--border);
+    font-size: 1.1rem;
+    z-index: 1;
+}
+
+.method-number { display: block; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.12em; color: var(--accent); }
+.method-icon {
+    width: 56px; height: 56px;
+    margin: 0.75rem auto;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+.method-step h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.35rem; }
+.method-step p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Roadmap */
+.path-section { background: var(--surface); border-block: 1px solid var(--border); }
+.path-status { max-width: 760px; margin: 2rem auto 0; }
+
+.roadmap {
+    list-style: none;
+    max-width: 760px;
+    margin: 2rem auto 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.roadmap::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--border);
+}
+.roadmap .skeleton { margin-left: 72px; }
+
+.stage { position: relative; display: flex; gap: 1.25rem; align-items: flex-start; }
+
+.stage-node {
+    position: relative;
+    z-index: 1;
+    width: 58px; height: 58px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+}
+.stage.is-completed .stage-node { border-color: var(--success); }
+.stage.is-in_progress .stage-node,
+.stage.is-available .stage-node { border-color: var(--brand-red); box-shadow: 0 0 0 5px var(--accent-soft); }
+.stage.is-locked .stage-node { filter: grayscale(0.7); opacity: 0.75; }
+
+.stage-card { flex: 1; display: block; }
+.stage.is-locked .stage-card { opacity: 0.85; }
+
+.stage-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+.stage-number { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.stage-title { font-size: 1.15rem; font-weight: 800; }
+.stage-subtitle { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin: 0.15rem 0 0.5rem; }
+.stage-desc { color: var(--text-muted); font-size: 0.87rem; }
+
+.stage-facts { display: flex; gap: 1.1rem; flex-wrap: wrap; margin: 0.85rem 0; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+.stage-facts i { color: var(--accent); margin-right: 0.25rem; }
+
+.stage-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.75rem; }
+.stage-progress { flex: 1; }
+.stage-cta { font-size: 0.8rem; font-weight: 800; color: var(--accent); white-space: nowrap; }
+
+/* Features */
+.feature-card h3 { font-size: 0.95rem; font-weight: 800; margin: 0.6rem 0 0.35rem; }
+.feature-card p { font-size: 0.85rem; color: var(--text-muted); }
+.feature-icon { font-size: 1.6rem; color: var(--accent); }
+
+/* CTA */
+.cta-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    background: var(--hero-gradient);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.25rem;
+    color: #fff;
+}
+.cta-banner h2 { color: #fff; font-size: 1.4rem; font-weight: 900; }
+.cta-banner p { color: rgba(255, 255, 255, 0.75); margin-top: 0.3rem; }
+
+@media (max-width: 900px) {
+    .method-steps { grid-template-columns: repeat(2, 1fr); }
+    .method-step::after { display: none; }
+}
+
+@media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: none; }
+    .method-steps { grid-template-columns: 1fr; }
+    .roadmap::before { left: 21px; }
+    .stage-node { width: 46px; height: 46px; font-size: 1.25rem; }
+    .roadmap .skeleton { margin-left: 60px; }
+}

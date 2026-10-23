@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My goals — FireGuitar</title>
+    <script src="/assets/js/core/theme-init.js"></script>
+    <link rel="icon" href="/assets/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/pages/goals.css">
+</head>
+<body>
+    <div id="app-header"></div>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow goals-eyebrow">Stay consistent</span>
+                <h1>My goals</h1>
+                <p class="lead">Small, regular practice beats long, rare sessions. Set a goal and FireGuitar tracks it automatically as you complete lessons.</p>
+            </div>
+        </section>
+
+        <section class="section-sm">
+            <div class="container goals-layout">
+                <aside class="goals-aside">
+                    <section class="card">
+                        <h2 class="card-title goals-form-title">Create a goal</h2>
+
+                        <div class="template-list" aria-label="Quick templates">
+                            <button type="button" class="template-chip" data-template="daily"><i class="bi bi-sunrise" aria-hidden="true"></i> 1 lesson a day</button>
+                            <button type="button" class="template-chip" data-template="weekly"><i class="bi bi-calendar-week" aria-hidden="true"></i> 60 min a week</button>
+                            <button type="button" class="template-chip" data-template="stage"><i class="bi bi-flag" aria-hidden="true"></i> Finish a stage</button>
+                        </div>
+
+                        <div id="form-alert" aria-live="polite"></div>
+
+                        <form id="goal-form" novalidate>
+                            <div class="form-field">
+                                <label class="form-label" for="title">Goal title</label>
+                                <input class="input" id="title" name="title" maxlength="100" placeholder="e.g. Practise 3 lessons this week" required>
+                                <span class="form-error" data-error-for="title"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <span class="form-label" id="type-label">Goal type</span>
+                                <div class="segmented" role="radiogroup" aria-labelledby="type-label">
+                                    <label><input type="radio" name="type" value="lessons" checked><span><i class="bi bi-play-circle" aria-hidden="true"></i> Lessons</span></label>
+                                    <label><input type="radio" name="type" value="minutes"><span><i class="bi bi-clock" aria-hidden="true"></i> Minutes</span></label>
+                                    <label><input type="radio" name="type" value="custom"><span><i class="bi bi-check2-square" aria-hidden="true"></i> Custom</span></label>
+                                </div>
+                                <span class="form-hint" id="type-hint">Counts lessons you complete in the chosen period.</span>
+                                <span class="form-error" data-error-for="type"></span>
+                            </div>
+
+                            <div class="form-row" id="measurable-fields">
+                                <div class="form-field">
+                                    <label class="form-label" for="target">Target</label>
+                                    <input class="input" type="number" id="target" name="target" min="1" max="10000" value="3" required>
+                                    <span class="form-error" data-error-for="target"></span>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label" for="period">Period</label>
+                                    <select class="select" id="period" name="period">
+                                        <option value="daily">Per day</option>
+                                        <option value="weekly" selected>Per week</option>
+                                        <option value="monthly">Per month</option>
+                                        <option value="all_time">In total</option>
+                                    </select>
+                                    <span class="form-error" data-error-for="period"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label" for="dueDate">Due date <span class="text-muted">(optional)</span></label>
+                                <input class="input" type="date" id="dueDate" name="dueDate">
+                                <span class="form-error" data-error-for="dueDate"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="submit-btn"><i class="bi bi-plus-lg" aria-hidden="true"></i> Add goal</button>
+                        </form>
+                    </section>
+                </aside>
+
+                <div class="goals-main">
+                    <div class="goal-filters" role="tablist" aria-label="Filter goals">
+                        <button type="button" class="filter-btn active" data-filter="active" role="tab" aria-selected="true">Active <span data-count="active"></span></button>
+                        <button type="button" class="filter-btn" data-filter="completed" role="tab" aria-selected="false">Completed <span data-count="completed"></span></button>
+                        <button type="button" class="filter-btn" data-filter="all" role="tab" aria-selected="false">All <span data-count="all"></span></button>
+                    </div>
+                    <div id="goal-list" class="goal-list">
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="app-footer"></div>
+    <script type="module" src="/assets/js/pages/goals.js"></script>
+</body>
+</html>
